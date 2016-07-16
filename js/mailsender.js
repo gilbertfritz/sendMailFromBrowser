@@ -1,3 +1,5 @@
+apostle.domainKey = "your_apostle.io_key";
+
 var success = function() {
     console.log("SUCCESS!");
     document.getElementById('clickMe').style.color = "green";
@@ -16,18 +18,13 @@ function validateEmail(email) {
 }
 
 function sendMail() {
-
-    apostle.domainKey = "your_apostle.io_key";
-
     var email = document.getElementById('email').value;
     if (!validateEmail(email)) {
         error("no valid email", "");
         return;
     }
-
     apostle.deliver('test', {
         email: email
     }).then(success, error);
-
     console.log("mail has been send to " + email);
 }
